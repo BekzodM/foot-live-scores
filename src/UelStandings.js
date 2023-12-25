@@ -42,7 +42,7 @@ export default function UelStandings() {
               <tbody>
                 {group.map((team, teamIndex) => (
                   <tr key={teamIndex}>
-                    <td>{teamIndex + 1} <img src={team.team.logo}/> </td>
+                    <td>{teamIndex + 1} <img src={team.team.logo} alt={team.team.name}/> </td>
                     <td>{team.team.name}</td>
                     <td>{team.all.played}</td>
                     <td>{team.all.win}</td>
