@@ -1,0 +1,31 @@
+.fixturesContainer {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .fixturesContainer h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+  
+  .fixturesContainer h3 {
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
+  
+  .fixturesContainer p {
+    margin-bottom: 8px;
+  }
+  
+  .fixturesContainer p.no-games {
+    font-style: italic;
+    color: #888;
+  }
+  
+  .fixturesContainer p.score {
+    color: #c44;
+    margin-top: 0;
+  }

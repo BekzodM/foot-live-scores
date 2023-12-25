@@ -1,0 +1,80 @@
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+  
+/* Styling for each group container */
+.groupStandings{
+  margin-bottom: 20px;
+}
+
+.groupStandings table {
+  width: 100vw;
+  border-collapse: collapse;
+}
+
+.groupStandings thead {
+  background-color: #1f1f1f;
+  color: #f3f3f3;
+}
+
+.groupStandings tbody {
+  color: #f3f3f3;
+}
+
+td {
+  border-right: 1px solid #aaa;
+}
+
+th {
+  border-right: 1px solid #aaa;
+}
+
+.groupStandings tbody td {
+  padding: 5px 1px;
+}
+
+.groupStandings tbody tr:nth-child(odd) {
+  background-color: #5f5f5f; /* Light gray */
+}
+
+.groupStandings tbody tr:nth-child(even) {
+  background-color: #2f2f2f; /* Dark gray */
+}
+
+
+.groupStandings th {
+  padding: 10px 0;
+}
+
+.groupStandings img{
+  width: 30px;
+  vertical-align: middle;
+}
+
+.groupHeading {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Styling for the group title */
+h3 {
+  color: #333;
+}
+
+/* Styling for the team list */
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Styling for each team item */
+li {
+  margin-bottom: 8px;
+}

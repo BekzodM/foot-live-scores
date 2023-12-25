@@ -1,0 +1,33 @@
+.LeagueStandings tbody img{
+    width: 30px;
+    vertical-align: middle;
+}
+
+.LeagueStandings table {
+    width: 100vw;
+    border-collapse: collapse;
+    /*margin: 10px auto;*/
+    height: calc(100vh - 60px);
+}
+
+.LeagueStandings thead {
+    background-color: #1f1f1f;
+    color: #f3f3f3;
+}
+
+.LeagueStandings tbody {
+    color: #f3f3f3;
+}
+
+.LeagueStandings tbody tr:nth-child(odd) {
+    background-color: #5f5f5f; /* Light gray */
+}
+  
+.LeagueStandings tbody tr:nth-child(even) {
+    background-color: #2f2f2f; /* Dark gray */
+}
+  
+
+.LeagueStandings th {
+    padding: 10px 0;
+}
