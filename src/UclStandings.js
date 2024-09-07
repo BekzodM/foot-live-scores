@@ -17,16 +17,12 @@ export default function UclStandings() {
       
     }, []);
 
-   const groups = apiResponse?.league?.standings;
+    const teams = apiResponse?.league?.standings[0] || [];
 
 
     return (
-      <div>
+      <div className="LeagueStandings">
         <h2>UEFA Champions League Standings</h2>
-        {groups ? (
-          groups.map((group, groupIndex) => (
-          <div className="groupStandings" key={groupIndex}>
-            <h3>Group {String.fromCharCode(65 + groupIndex)}</h3>
             <table>
               <thead>
                 <tr>
@@ -40,9 +36,9 @@ export default function UclStandings() {
                 </tr>
               </thead>
               <tbody>
-                {group.map((team, teamIndex) => (
+                {teams.map((team, teamIndex) => (
                   <tr key={teamIndex}>
-                    <td>{teamIndex + 1} <img src={team.team.logo} alt={team.team.name}/> </td>
+                    <td>{teamIndex + 1} <img src={team.team.logo} alt={team.team.name}/></td>
                     <td>{team.team.name}</td>
                     <td>{team.all.played}</td>
                     <td>{team.all.win}</td>
@@ -53,11 +49,6 @@ export default function UclStandings() {
                 ))}
               </tbody>
              </table>
-          </div>
-          ))
-        ) : (
-          <li>Loading...</li>
-        )}
       </div>
     );
 }
