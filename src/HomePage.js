@@ -112,7 +112,30 @@ export default function HomePage() {
       ) : (
         <>
           <h2>{selectedDate}'s Fixtures</h2>
-          <h3>English Premier League</h3>
+          <div className="league-fixtures">
+            {Object.entries(fixturesByLeague).map(
+              ([leagueId, fixtures]) =>
+                fixtures.length > 0 && (
+                  <div key={leagueId} className="league-section">
+                    <h3>
+                      {leagueId === '1' ? 'International' : fixtures[0].league.name}
+                    </h3>
+                    {fixtures.map((item, index) => (
+                      <div key={index} className="fixture">
+                        <p className="teams">
+                          {item.teams.home.name} vs {item.teams.away.name}
+                        </p>
+                        <p className="score">
+                          {item.goals.home} {item.fixture.status.short}{" "}
+                          {item.goals.away}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                )
+            )}
+          </div>
+          {/* <h3>English Premier League</h3>
           {fixturesByLeague[39]?.length > 0 ? (
             fixturesByLeague[39].map((item, index) => (
               <div key={index}>
@@ -246,7 +269,7 @@ export default function HomePage() {
             ))
           ) : (
             <p className="noGames">No Games Today</p>
-          )}
+          )} */}
         </>
       )}
     </div>
