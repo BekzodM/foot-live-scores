@@ -29,3 +29,9 @@
     color: #c44;
     margin-top: 0;
   }
+
+  .fixturesContainer .country-flag {
+    width: 24px;
+    height: 18px;
+    object-fit: cover;
+  }

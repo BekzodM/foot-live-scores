@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import "./App.css";
 import "./HomePage.css";
+import ifope from './ifope.jpg';
 
 export default function HomePage() {
   const [apiResponse, setApiResponse] = useState([]);
@@ -118,7 +119,22 @@ export default function HomePage() {
                 fixtures.length > 0 && (
                   <div key={leagueId} className="league-section">
                     <h3>
-                      {leagueId === '1' ? 'International' : fixtures[0].league.name}
+                      <img
+                        src={leagueId === "1"
+                          ? ifope
+                          : fixtures[0].league.flag}
+                        alt={`Flag for ${
+                          leagueId === "1"
+                            ? "International"
+                            : fixtures[0].league.name
+                        }`}
+                        className="country-flag"
+                      />
+                      <span>
+                        {leagueId === "1"
+                          ? "International"
+                          : fixtures[0].league.name}
+                      </span>
                     </h3>
                     {fixtures.map((item, index) => (
                       <div key={index} className="fixture">
