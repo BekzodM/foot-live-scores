@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import "./App.css";
 import "./HomePage.css";
-import ifope from './ifope.jpg';
+import ifope from "./ifope.jpg";
 
 export default function HomePage() {
   const [apiResponse, setApiResponse] = useState([]);
@@ -120,9 +120,7 @@ export default function HomePage() {
                   <div key={leagueId} className="league-section">
                     <h3>
                       <img
-                        src={leagueId === "1"
-                          ? ifope
-                          : fixtures[0].league.flag}
+                        src={leagueId === "1" ? ifope : fixtures[0].league.flag}
                         alt={`Flag for ${
                           leagueId === "1"
                             ? "International"
@@ -138,12 +136,46 @@ export default function HomePage() {
                     </h3>
                     {fixtures.map((item, index) => (
                       <div key={index} className="fixture">
+                        <p className="status">
+                          {(() => {
+                            const matchDateUTC = new Date(item.fixture.date);
+                            const clientTimeZone =
+                              Intl.DateTimeFormat().resolvedOptions().timeZone;
+                            const matchDateInClientTZ = new Intl.DateTimeFormat(
+                              "en-US",
+                              {
+                                timeZone: clientTimeZone,
+                                hour: "2-digit",
+                                minute: "2-digit",
+                              }
+                            ).format(matchDateUTC);
+
+                            const status = item.fixture.status.short;
+
+                            if (status === "NS") {
+                              return matchDateInClientTZ;
+                            } else if (
+                              [
+                                "1H",
+                                "2H",
+                                "ET",
+                                "BT",
+                                "P",
+                                "INT",
+                                "LIVE",
+                              ].includes(status)
+                            ) {
+                              return "LIVE";
+                            } else {
+                              return status;
+                            }
+                          })()}
+                        </p>
                         <p className="teams">
                           {item.teams.home.name} vs {item.teams.away.name}
                         </p>
                         <p className="score">
-                          {item.goals.home} {item.fixture.status.short}{" "}
-                          {item.goals.away}
+                          {item.goals.home} {item.goals.away}
                         </p>
                       </div>
                     ))}
