@@ -6,6 +6,7 @@ import "./HomePage.css";
 import ifope from "./ifope.jpg";
 
 export default function HomePage() {
+  const clientTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   const [apiResponse, setApiResponse] = useState([]);
   const [selectedDate, setSelectedDate] = useState(
     new Date().toISOString().split("T")[0]
@@ -97,6 +98,25 @@ export default function HomePage() {
     setFixturesByLeague(tempFixturesByLeague);
   }, [apiResponse]);
 
+  const getStatusDisplay = (item) => {
+    const matchDateUTC = new Date(item.fixture.date);
+    const matchDateInClientTZ = new Intl.DateTimeFormat("en-US", {
+      timeZone: clientTimeZone,
+      hour: "2-digit",
+      minute: "2-digit",
+    }).format(matchDateUTC);
+
+    const status = item.fixture.status.short;
+
+    if (status === "NS") {
+      return matchDateInClientTZ;
+    } else if (["1H", "2H", "ET", "BT", "P", "INT", "LIVE"].includes(status)) {
+      return "LIVE";
+    } else {
+      return status;
+    }
+  };
+
   return (
     <div className="fixturesContainer">
       <input type="date" value={selectedDate} onChange={handleDateChange} />
@@ -118,206 +138,50 @@ export default function HomePage() {
               ([leagueId, fixtures]) =>
                 fixtures.length > 0 && (
                   <div key={leagueId} className="league-section">
-                    <h3>
-                      <img
-                        src={leagueId === "1" ? ifope : fixtures[0].league.flag}
-                        alt={`Flag for ${
-                          leagueId === "1"
-                            ? "International"
-                            : fixtures[0].league.name
-                        }`}
-                        className="country-flag"
-                      />
-                      <span>
-                        {leagueId === "1"
-                          ? "International"
-                          : fixtures[0].league.name}
-                      </span>
-                    </h3>
-                    {fixtures.map((item, index) => (
-                      <div key={index} className="fixture">
-                        <p className="status">
-                          {(() => {
-                            const matchDateUTC = new Date(item.fixture.date);
-                            const clientTimeZone =
-                              Intl.DateTimeFormat().resolvedOptions().timeZone;
-                            const matchDateInClientTZ = new Intl.DateTimeFormat(
-                              "en-US",
-                              {
-                                timeZone: clientTimeZone,
-                                hour: "2-digit",
-                                minute: "2-digit",
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>
+                            <img
+                              src={
+                                leagueId === "1"
+                                  ? ifope
+                                  : fixtures[0].league.flag
                               }
-                            ).format(matchDateUTC);
-
-                            const status = item.fixture.status.short;
-
-                            if (status === "NS") {
-                              return matchDateInClientTZ;
-                            } else if (
-                              [
-                                "1H",
-                                "2H",
-                                "ET",
-                                "BT",
-                                "P",
-                                "INT",
-                                "LIVE",
-                              ].includes(status)
-                            ) {
-                              return "LIVE";
-                            } else {
-                              return status;
-                            }
-                          })()}
-                        </p>
-                        <p className="teams">
-                          {item.teams.home.name} vs {item.teams.away.name}
-                        </p>
-                        <p className="score">
-                          {item.goals.home} {item.goals.away}
-                        </p>
-                      </div>
-                    ))}
+                              alt={`Flag for ${
+                                leagueId === "1"
+                                  ? "International"
+                                  : fixtures[0].league.name
+                              }`}
+                              className="country-flag"
+                            />
+                            <span>
+                              {leagueId === "1"
+                                ? "International"
+                                : fixtures[0].league.name}
+                            </span>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {fixtures.map((item, index) => (
+                          <tr key={item.fixture.id} className="fixture">
+                            <td>
+                              <span>{getStatusDisplay(item)}</span>
+                              <div className="teams">
+                                {item.teams.home.name} {item.goals.home} -{" "}
+                                {item.goals.away} {item.teams.away.name}
+                              </div>
+                            </td>
+                          </tr>
+                        ))}
+                        <tr></tr>
+                      </tbody>
+                    </table>
                   </div>
                 )
             )}
           </div>
-          {/* <h3>English Premier League</h3>
-          {fixturesByLeague[39]?.length > 0 ? (
-            fixturesByLeague[39].map((item, index) => (
-              <div key={index}>
-                <p>
-                  {item.teams.home.name} vs {item.teams.away.name}
-                </p>
-                <p className="score">
-                  {item.goals.home} {item.fixture.status.short}{" "}
-                  {item.goals.away}
-                </p>
-              </div>
-            ))
-          ) : (
-            <p className="noGames">No Games Today</p>
-          )}
-
-          <h3>La Liga</h3>
-          {fixturesByLeague[140]?.length > 0 ? (
-            fixturesByLeague[140].map((item, index) => (
-              <div key={index}>
-                <p>
-                  {item.teams.home.name} vs {item.teams.away.name}
-                </p>
-                <p className="score">
-                  {item.goals.home} {item.fixture.status.short}{" "}
-                  {item.goals.away}
-                </p>
-              </div>
-            ))
-          ) : (
-            <p className="noGames">No Games Today</p>
-          )}
-
-          <h3>Serie A</h3>
-          {fixturesByLeague[135]?.length > 0 ? (
-            fixturesByLeague[135].map((item, index) => (
-              <div key={index}>
-                <p>
-                  {item.teams.home.name} vs {item.teams.away.name}
-                </p>
-                <p className="score">
-                  {item.goals.home} {item.fixture.status.short}{" "}
-                  {item.goals.away}
-                </p>
-              </div>
-            ))
-          ) : (
-            <p className="noGames">No Games Today</p>
-          )}
-
-          <h3>Bundesliga</h3>
-          {fixturesByLeague[78]?.length > 0 ? (
-            fixturesByLeague[78].map((item, index) => (
-              <div key={index}>
-                <p>
-                  {item.teams.home.name} vs {item.teams.away.name}
-                </p>
-                <p className="score">
-                  {item.goals.home} {item.fixture.status.short}{" "}
-                  {item.goals.away}
-                </p>
-              </div>
-            ))
-          ) : (
-            <p className="noGames">No Games Today</p>
-          )}
-
-          <h3>Liga 1</h3>
-          {fixturesByLeague[61]?.length > 0 ? (
-            fixturesByLeague[61].map((item, index) => (
-              <div key={index}>
-                <p>
-                  {item.teams.home.name} vs {item.teams.away.name}
-                </p>
-                <p className="score">
-                  {item.goals.home} {item.fixture.status.short}{" "}
-                  {item.goals.away}
-                </p>
-              </div>
-            ))
-          ) : (
-            <p className="noGames">No Games Today</p>
-          )}
-
-          <h3>UEFA Champions League</h3>
-          {fixturesByLeague[2]?.length > 0 ? (
-            fixturesByLeague[2].map((item, index) => (
-              <div key={index}>
-                <p>
-                  {item.teams.home.name} vs {item.teams.away.name}
-                </p>
-                <p className="score">
-                  {item.goals.home} {item.fixture.status.short}{" "}
-                  {item.goals.away}
-                </p>
-              </div>
-            ))
-          ) : (
-            <p className="noGames">No Games Today</p>
-          )}
-
-          <h3>UEFA Europa League</h3>
-          {fixturesByLeague[3]?.length > 0 ? (
-            fixturesByLeague[3].map((item, index) => (
-              <div key={index}>
-                <p>
-                  {item.teams.home.name} vs {item.teams.away.name}
-                </p>
-                <p className="score">
-                  {item.goals.home} {item.fixture.status.short}{" "}
-                  {item.goals.away}
-                </p>
-              </div>
-            ))
-          ) : (
-            <p className="noGames">No Games Today</p>
-          )}
-
-          <h3>International</h3>
-          {fixturesByLeague[1]?.length > 0 ? (
-            fixturesByLeague[1].map((item, index) => (
-              <div key={index}>
-                <p>
-                  {item.teams.home.name} vs {item.teams.away.name}
-                </p>
-                <p className="score">
-                  {item.goals.home} {item.fixture.status.short}{" "}
-                  {item.goals.away}
-                </p>
-              </div>
-            ))
-          ) : (
-            <p className="noGames">No Games Today</p>
-          )} */}
         </>
       )}
     </div>
