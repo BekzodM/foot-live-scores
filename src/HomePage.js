@@ -4,9 +4,11 @@ import { useState } from "react";
 import "./App.css";
 import "./HomePage.css";
 import ifope from "./ifope.jpg";
+import useWindowWidth from './hooks/useWindowWidth';
 
 export default function HomePage() {
   const clientTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  const windowWidth = useWindowWidth();
   const [apiResponse, setApiResponse] = useState([]);
   const [selectedDate, setSelectedDate] = useState(
     new Date().toISOString().split("T")[0]
@@ -168,14 +170,26 @@ export default function HomePage() {
                           <tr key={item.fixture.id} className="fixture">
                             <td>
                               <span>{getStatusDisplay(item)}</span>
-                              <div className="teams">
-                                {item.teams.home.name} {item.goals.home} -{" "}
-                                {item.goals.away} {item.teams.away.name}
-                              </div>
+                              {windowWidth < 600 ? (
+                                <>
+                                  <div className="teams">
+                                    <h3>{item.teams.home.name}</h3>
+                                    <h3>{item.teams.away.name}</h3>
+                                  </div>
+                                  <div className="scores">
+                                    <h3>{item.goals.home}</h3>
+                                    <h3>{item.goals.away}</h3>
+                                  </div>
+                                </>
+                              ) : (
+                                <div className="teams">
+                                  {item.teams.home.name} {item.goals.home} -{" "}
+                                  {item.goals.away} {item.teams.away.name}
+                                </div>
+                              )}
                             </td>
                           </tr>
                         ))}
-                        <tr></tr>
                       </tbody>
                     </table>
                   </div>
