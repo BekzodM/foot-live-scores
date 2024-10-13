@@ -19,13 +19,31 @@
   .fixturesContainer p {
     margin-bottom: 8px;
   }
-  
-  .fixturesContainer p.no-games {
-    font-style: italic;
-    color: #888;
+
+  .fixturesContainer .country-flag {
+    width: 24px;
+    height: 18px;
+    object-fit: cover;
   }
-  
-  .fixturesContainer p.score {
-    color: #c44;
-    margin-top: 0;
+
+  .fixturesContainer table {
+    width: 100%;
+  }
+
+  .fixturesContainer table th {
+    text-align: left;
+    border: 0;
+  }
+
+  .fixturesContainer .fixture td {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 0;
+  }
+
+  .fixturesContainer .teams {
+    margin: 0 auto;
+    text-align: center;
+    flex-grow: 1;
   }
