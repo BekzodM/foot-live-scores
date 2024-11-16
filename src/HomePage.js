@@ -135,11 +135,11 @@ export default function HomePage() {
       ) : (
         <>
           <h2>{selectedDate}'s Fixtures</h2>
-          <div className="league-fixtures">
+          <div className="leagueFixtures">
             {Object.entries(fixturesByLeague).map(
               ([leagueId, fixtures]) =>
                 fixtures.length > 0 && (
-                  <div key={leagueId} className="league-section">
+                  <div key={leagueId} className="leagueSection">
                     <table>
                       <thead>
                         <tr>
@@ -155,7 +155,7 @@ export default function HomePage() {
                                   ? "International"
                                   : fixtures[0].league.name
                               }`}
-                              className="country-flag"
+                              className="countryFlag"
                             />
                             <span>
                               {leagueId === "1"
