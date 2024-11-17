@@ -169,7 +169,7 @@ export default function HomePage() {
                         {fixtures.map((item, index) => (
                           <tr key={item.fixture.id} className="fixture">
                             <td>
-                              <span>{getStatusDisplay(item)}</span>
+                              <span className="time">{getStatusDisplay(item)}</span>
                               {windowWidth < 600 ? (
                                 <>
                                   <div className="teams">
