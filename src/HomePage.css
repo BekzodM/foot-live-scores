@@ -1,18 +1,53 @@
-.fixturesContainer {
-    max-width: 800px;
-    margin: 0 auto;
+  .fixturesContainer {
+    max-width: 900px;
+    margin: 20px auto;
     padding: 20px;
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   }
   
   .fixturesContainer h2 {
-    font-size: 24px;
-    margin-bottom: 15px;
+    font-size: 28px;
+    color: #333;
+    border-bottom: 2px solid #0099cc;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .fixture {
+    background-color: #ffffff;
+    margin: 10px 0;
+    padding: 15px 15px;
+    border-radius: 5px; 
+    display: block;
+    align-items: center;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .fixture:hover {
+    background-color: #e6f7ff;
+    transform: translateY(-5px);
+  }
+
+  .fixture span.time {
+    flex: 0 0 80px; 
+    text-align: left; 
+    font-weight: bold;
+  }
+  
+  .fixture div.teams {
+    flex: 1; 
+    text-align: center; 
+    font-weight: 500;
+    font-size: 18px;
+    color: #333;
   }
   
   .fixturesContainer h3 {
-    font-size: 20px;
-    margin-top: 30px;
+    font-size: 16px;
+    margin-top: 10px;
     margin-bottom: 10px;
   }
   
@@ -20,7 +55,13 @@
     margin-bottom: 8px;
   }
 
-  .fixturesContainer .country-flag {
+  .fixturesContainer .leagueSection {
+    margin: 10px 0;
+    padding: 5px;
+    background-color: #333;
+  }
+
+  .fixturesContainer .countryFlag {
     width: 24px;
     height: 18px;
     object-fit: cover;
@@ -33,17 +74,11 @@
   .fixturesContainer table th {
     text-align: left;
     border: 0;
+    color: white;
   }
 
   .fixturesContainer .fixture td {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     border: 0;
-  }
-
-  .fixturesContainer .teams {
-    margin: 0 auto;
-    text-align: center;
-    flex-grow: 1;
   }
