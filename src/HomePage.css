@@ -82,3 +82,8 @@
     align-items: center;
     border: 0;
   }
+
+  .logos img{
+    width: 30px;
+    vertical-align: middle;
+  }
