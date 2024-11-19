@@ -187,8 +187,10 @@ export default function HomePage() {
                                 </>
                               ) : (
                                 <div className="teams">
+                                  <img src = {item.teams.home.logo} />
                                   {item.teams.home.name} {item.goals.home} -{" "}
                                   {item.goals.away} {item.teams.away.name}
+                                  <img src = {item.teams.away.logo} />
                                 </div>
                               )}
                             </td>
