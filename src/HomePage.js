@@ -172,7 +172,11 @@ export default function HomePage() {
                               <span className="time">{getStatusDisplay(item)}</span>
                               {windowWidth < 600 ? (
                                 <>
-                                  <div className="teams">
+                                  <div className="logos">
+                                    <h3><img src = {item.teams.home.logo} alt=""/></h3>
+                                    <h3><img src = {item.teams.away.logo} alt=""/></h3>
+                                  </div>
+                                  <div className="teamNames">
                                     <h3>{item.teams.home.name}</h3>
                                     <h3>{item.teams.away.name}</h3>
                                   </div>
@@ -183,8 +187,17 @@ export default function HomePage() {
                                 </>
                               ) : (
                                 <div className="teams">
-                                  {item.teams.home.name} {item.goals.home} -{" "}
-                                  {item.goals.away} {item.teams.away.name}
+                                  <div className="homeTeam">
+                                    <img src = {item.teams.home.logo} alt=""/>
+                                    {item.teams.home.name}
+                                  </div>
+                                  <div className="scores">
+                                    {item.goals.home} - {item.goals.away}
+                                  </div>
+                                  <div className="awayTeam">
+                                    {item.teams.away.name}
+                                    <img src = {item.teams.away.logo} alt=""/>
+                                  </div>
                                 </div>
                               )}
                             </td>
