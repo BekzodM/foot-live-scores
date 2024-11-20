@@ -173,8 +173,8 @@ export default function HomePage() {
                               {windowWidth < 600 ? (
                                 <>
                                   <div className="logos">
-                                    <h3><img src = {item.teams.home.logo} /></h3>
-                                    <h3><img src = {item.teams.away.logo} /></h3>
+                                    <h3><img src = {item.teams.home.logo} alt=""/></h3>
+                                    <h3><img src = {item.teams.away.logo} alt=""/></h3>
                                   </div>
                                   <div className="teamNames">
                                     <h3>{item.teams.home.name}</h3>
@@ -188,7 +188,7 @@ export default function HomePage() {
                               ) : (
                                 <div className="teams">
                                   <div className="homeTeam">
-                                    <img src = {item.teams.home.logo} />
+                                    <img src = {item.teams.home.logo} alt=""/>
                                     {item.teams.home.name}
                                   </div>
                                   <div className="scores">
@@ -196,7 +196,7 @@ export default function HomePage() {
                                   </div>
                                   <div className="awayTeam">
                                     {item.teams.away.name}
-                                    <img src = {item.teams.away.logo} />
+                                    <img src = {item.teams.away.logo} alt=""/>
                                   </div>
                                 </div>
                               )}
