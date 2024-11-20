@@ -37,12 +37,36 @@
     font-weight: bold;
   }
   
-  .fixture div.teams {
-    flex: 1; 
-    text-align: center; 
-    font-weight: 500;
-    font-size: 18px;
-    color: #333;
+  .teams {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .teams .homeTeam {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .teams .awayTeam {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+  .teams .homeTeam img,
+  .teams .awayTeam img {
+    width: 28px;
+    margin: 0 5px;
+  }
+  
+  .teams .scores {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
   }
   
   .fixturesContainer h3 {
@@ -83,11 +107,7 @@
     border: 0;
   }
 
-  .teams img {
-    width: 30px;
-    vertical-align: middle;
-    padding: 0 5px;
-  }
+
 
   .logos img{
     width: 30px;
