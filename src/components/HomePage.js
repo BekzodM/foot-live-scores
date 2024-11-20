@@ -1,10 +1,10 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import "./App.css";
+import "../App.css";
 import "./HomePage.css";
-import ifope from "./ifope.jpg";
-import useWindowWidth from './hooks/useWindowWidth';
+import ifope from "../ifope.jpg";
+import useWindowWidth from '../hooks/useWindowWidth';
 
 export default function HomePage() {
   const clientTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
