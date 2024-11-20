@@ -176,7 +176,7 @@ export default function HomePage() {
                                     <h3><img src = {item.teams.home.logo} /></h3>
                                     <h3><img src = {item.teams.away.logo} /></h3>
                                   </div>
-                                  <div className="teams">
+                                  <div className="teamNames">
                                     <h3>{item.teams.home.name}</h3>
                                     <h3>{item.teams.away.name}</h3>
                                   </div>

@@ -68,9 +68,17 @@
     font-weight: bold;
     text-align: center;
   }
+
+  .fixture .teamNames {
+    flex: 1; 
+    text-align: center; 
+    font-weight: 500;
+    font-size: 18px;
+    color: #333;
+  }
   
   .fixturesContainer h3 {
-    font-size: 16px;
+    font-size: 14px;
     margin-top: 10px;
     margin-bottom: 10px;
   }
@@ -88,7 +96,9 @@
   .fixturesContainer .countryFlag {
     width: 24px;
     height: 18px;
+    padding: 2px 5px;
     object-fit: cover;
+    vertical-align: bottom;
   }
 
   .fixturesContainer table {
@@ -107,9 +117,8 @@
     border: 0;
   }
 
-
-
   .logos img{
-    width: 30px;
+    padding-left: 5px;
+    width: 24px;
     vertical-align: middle;
   }
