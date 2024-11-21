@@ -5,6 +5,7 @@ import "../App.css";
 import "./HomePage.css";
 import ifope from "../ifope.jpg";
 import useWindowWidth from '../hooks/useWindowWidth';
+import DateSelection from "./DateSelection";
 
 export default function HomePage() {
   const clientTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -122,6 +123,7 @@ export default function HomePage() {
   return (
     <div className="fixturesContainer">
       <input type="date" value={selectedDate} onChange={handleDateChange} />
+      <DateSelection />
       {loading ? (
         <>
           <p>Loading fixtures...</p>
