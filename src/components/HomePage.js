@@ -53,7 +53,7 @@ export default function HomePage() {
   }, [selectedDate]);
 
   const handleDateChange = (event) => {
-    setSelectedDate(event.target.value);
+    setSelectedDate(event);
   };
 
   useEffect(() => {
@@ -122,8 +122,8 @@ export default function HomePage() {
 
   return (
     <div className="fixturesContainer">
-      <input type="date" value={selectedDate} onChange={handleDateChange} />
-      <DateSelection />
+      {/* <input type="date" value={selectedDate} onChange={handleDateChange} /> */}
+      <DateSelection onChanged={handleDateChange}/>
       {loading ? (
         <>
           <p>Loading fixtures...</p>
