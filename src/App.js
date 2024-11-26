@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-import Navbar from './Navbar.js';
-import EplStandings from './EplStandings.js';
-import LaLigaStandings from './LaLigaStandings.js';
-import UclStandings from './UclStandings.js';
-import UelStandings from './UelStandings.js';
-import HomePage from './HomePage.js';
+import Navbar from './components/Navbar.js';
+import EplStandings from './components/EplStandings.js';
+import LaLigaStandings from './components/LaLigaStandings.js';
+import UclStandings from './components/UclStandings.js';
+import UelStandings from './components/UelStandings.js';
+import HomePage from './components/HomePage.js';
 
 function App() {
 

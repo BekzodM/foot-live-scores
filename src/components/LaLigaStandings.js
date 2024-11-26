@@ -1,14 +1,14 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import "./App.css";
-import "./LeagueStandings.css"
+import "../App.css";
+import "./LeagueStandings.css";
 
-export default function EplStandings() {
+export default function LaLigaStandings() {
     const [apiResponse, setApiResponse] = useState([]);
     useEffect(() => {
       const fetchLeague = async () => {
-        fetch(process.env.REACT_APP_API_EPL_URL)
+        fetch(process.env.REACT_APP_API_LALIGA_URL)
           .then((response) => response.json())
           .then((data) => {setApiResponse(data.response[0]);})
           .catch((err) => {console.log(err);});
@@ -17,11 +17,11 @@ export default function EplStandings() {
       
     }, []);
 
-   const teams = apiResponse?.league?.standings[0] || [];
+    const teams = apiResponse?.league?.standings[0] || [];
 
     return (
       <div className="LeagueStandings">
-        <h2>English Premier League Standings</h2>
+        <h2>La Liga Standings</h2>
         <table>
               <thead>
                 <tr>

@@ -1,10 +1,11 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import "./App.css";
+import "../App.css";
 import "./HomePage.css";
-import ifope from "./ifope.jpg";
-import useWindowWidth from './hooks/useWindowWidth';
+import ifope from "../ifope.jpg";
+import useWindowWidth from '../hooks/useWindowWidth';
+import DateSelection from "./DateSelection";
 
 export default function HomePage() {
   const clientTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -52,7 +53,7 @@ export default function HomePage() {
   }, [selectedDate]);
 
   const handleDateChange = (event) => {
-    setSelectedDate(event.target.value);
+    setSelectedDate(event);
   };
 
   useEffect(() => {
@@ -121,7 +122,8 @@ export default function HomePage() {
 
   return (
     <div className="fixturesContainer">
-      <input type="date" value={selectedDate} onChange={handleDateChange} />
+      {/* <input type="date" value={selectedDate} onChange={handleDateChange} /> */}
+      <DateSelection onChanged={handleDateChange}/>
       {loading ? (
         <>
           <p>Loading fixtures...</p>
