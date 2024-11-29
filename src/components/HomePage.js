@@ -127,10 +127,6 @@ export default function HomePage() {
       {loading ? (
         <>
           <p>Loading fixtures...</p>
-          <p>Allow up to 2 minutes for API servers to spin up</p>
-          <a href="https://docs.render.com/free#spinning-down-on-idle">
-            Learn more
-          </a>
         </>
       ) : error ? (
         <p>Error: {error}</p>
